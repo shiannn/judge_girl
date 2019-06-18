@@ -14,7 +14,7 @@ int isassigned[256];
 int l1,l2,l3;
 
 int check();
-void dfs(const char string[],int length,int index,int string_num);
+void dfs(const char string[],int length,int idx,int string_num);
 int main(){
     scanf("%s %s %s",first,second,third);
     l1=strlen(first);
@@ -30,9 +30,9 @@ int main(){
     //dfs len1+len2+len3 layers
     //check
 }
-void dfs(const char string[],int length,int index,int string_num){
-    //printf("%s %d\n",string,index);
-    if(index==length){
+void dfs(const char string[],int length,int idx,int string_num){
+    //printf("%s %d\n",string,idx);
+    if(idx==length){
         if(string_num==0){
             //first
             dfs(second,l2,0,1);
@@ -66,21 +66,21 @@ void dfs(const char string[],int length,int index,int string_num){
     }
     else{
         int i;
-        if(isdigit(string[index])==1){
-            value[string[index]]=string[index]-'0';
-            dfs(string,length,index+1,string_num);
+        if(isdigit(string[idx])==1){
+            value[string[idx]]=string[idx]-'0';
+            dfs(string,length,idx+1,string_num);
         }
-        else if(isassigned[string[index]]==0){//not yet assigned
-            isassigned[string[index]]=1;
+        else if(isassigned[string[idx]]==0){//not yet assigned
+            isassigned[string[idx]]=1;
             for(i=0;i<=9;i++){
-                value[string[index]]=i;//value['A']=2
-                dfs(string,length,index+1,string_num);
+                value[string[idx]]=i;//value['A']=2
+                dfs(string,length,idx+1,string_num);
             }
-            isassigned[string[index]]=0;
-            //value[string[index]]=0;
+            isassigned[string[idx]]=0;
+            //value[string[idx]]=0;
         }
         else{ 
-            dfs(string,length,index+1,string_num);
+            dfs(string,length,idx+1,string_num);
         }
     }
 }
