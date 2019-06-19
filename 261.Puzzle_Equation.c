@@ -66,7 +66,7 @@ void dfs(const char string[],int length,int idx,int string_num){
     }
     else{
         int i;
-        if(isdigit(string[idx])==1){
+        if(isdigit(string[idx])){
             value[string[idx]]=string[idx]-'0';
             dfs(string,length,idx+1,string_num);
         }
